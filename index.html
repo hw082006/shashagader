@@ -18,9 +18,7 @@
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
-
     html { scroll-behavior: smooth; }
-
     body {
       background: var(--warm-white);
       color: var(--ink);
@@ -29,7 +27,6 @@
       overflow-x: hidden;
     }
 
-    /* LANG TOGGLE */
     #lang-toggle {
       position: fixed;
       top: 1.2rem;
@@ -42,7 +39,6 @@
       border-radius: 2px;
       overflow: hidden;
     }
-
     #lang-toggle button {
       background: none;
       border: none;
@@ -54,39 +50,28 @@
       color: var(--text-light);
       transition: all 0.2s;
     }
+    #lang-toggle button.active { background: var(--clay); color: white; }
 
-    #lang-toggle button.active {
-      background: var(--clay);
-      color: white;
-    }
-
-    /* HERO */
     .hero {
       min-height: 100vh;
       display: grid;
       grid-template-columns: 1fr 1fr;
       position: relative;
     }
-
-    .hero-image {
-      position: relative;
-      overflow: hidden;
-    }
-
+    .hero-image { position: relative; overflow: hidden; }
     .hero-image img {
       width: 100%;
       height: 100%;
       object-fit: cover;
+      object-position: top center;
       filter: sepia(15%) contrast(1.05);
     }
-
     .hero-image::after {
       content: '';
       position: absolute;
       inset: 0;
       background: linear-gradient(to right, transparent 70%, var(--warm-white));
     }
-
     .hero-text {
       display: flex;
       flex-direction: column;
@@ -94,7 +79,6 @@
       padding: 4rem 4rem 4rem 3rem;
       position: relative;
     }
-
     .hero-text::before {
       content: '';
       position: absolute;
@@ -102,7 +86,6 @@
       height: 3px;
       background: var(--clay);
     }
-
     .hero-eyebrow {
       font-size: 0.7rem;
       letter-spacing: 0.25em;
@@ -110,7 +93,6 @@
       color: var(--clay);
       margin-bottom: 1.5rem;
     }
-
     .hero-name {
       font-family: 'Cormorant Garamond', serif;
       font-size: clamp(3.5rem, 6vw, 5.5rem);
@@ -119,12 +101,7 @@
       color: var(--deep);
       margin-bottom: 1rem;
     }
-
-    .hero-name em {
-      font-style: italic;
-      color: var(--clay);
-    }
-
+    .hero-name em { font-style: italic; color: var(--clay); }
     .hero-subtitle {
       font-family: 'Cormorant Garamond', serif;
       font-size: 1.1rem;
@@ -133,14 +110,7 @@
       margin-bottom: 2.5rem;
       line-height: 1.6;
     }
-
-    .hero-divider {
-      width: 3rem;
-      height: 1px;
-      background: var(--clay);
-      margin-bottom: 2.5rem;
-    }
-
+    .hero-divider { width: 3rem; height: 1px; background: var(--clay); margin-bottom: 2.5rem; }
     .hero-location {
       font-size: 0.75rem;
       letter-spacing: 0.15em;
@@ -148,13 +118,7 @@
       color: var(--text-light);
       margin-bottom: 3rem;
     }
-
-    .hero-cta {
-      display: flex;
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
-
+    .hero-cta { display: flex; gap: 1rem; flex-wrap: wrap; }
     .btn-primary {
       display: inline-block;
       padding: 0.85rem 2rem;
@@ -166,9 +130,7 @@
       text-transform: uppercase;
       transition: background 0.25s;
     }
-
     .btn-primary:hover { background: var(--deep); }
-
     .btn-secondary {
       display: inline-block;
       padding: 0.85rem 2rem;
@@ -180,13 +142,8 @@
       text-transform: uppercase;
       transition: all 0.25s;
     }
+    .btn-secondary:hover { background: var(--clay); color: white; }
 
-    .btn-secondary:hover {
-      background: var(--clay);
-      color: white;
-    }
-
-    /* NAV */
     nav {
       background: var(--deep);
       padding: 1rem 4rem;
@@ -197,20 +154,8 @@
       top: 0;
       z-index: 50;
     }
-
-    .nav-logo {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.2rem;
-      color: var(--sand);
-      letter-spacing: 0.05em;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 2.5rem;
-      list-style: none;
-    }
-
+    .nav-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; color: var(--sand); letter-spacing: 0.05em; }
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
     .nav-links a {
       color: var(--sand);
       text-decoration: none;
@@ -220,22 +165,10 @@
       opacity: 0.8;
       transition: opacity 0.2s;
     }
-
     .nav-links a:hover { opacity: 1; }
 
-    /* SECTIONS */
-    section {
-      padding: 6rem 4rem;
-    }
-
-    .section-label {
-      font-size: 0.7rem;
-      letter-spacing: 0.3em;
-      text-transform: uppercase;
-      color: var(--clay);
-      margin-bottom: 1rem;
-    }
-
+    section { padding: 6rem 4rem; }
+    .section-label { font-size: 0.7rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--clay); margin-bottom: 1rem; }
     .section-title {
       font-family: 'Cormorant Garamond', serif;
       font-size: clamp(2rem, 4vw, 3.2rem);
@@ -245,7 +178,6 @@
       line-height: 1.1;
     }
 
-    /* ABOUT */
     .about {
       background: var(--sand);
       display: grid;
@@ -253,45 +185,19 @@
       gap: 5rem;
       align-items: start;
     }
-
     .about-left { padding-top: 0.5rem; }
+    .about-portrait { width: 100%; aspect-ratio: 3/4; object-fit: cover; object-position: top center; filter: sepia(10%) contrast(1.05); }
+    .about-text { font-size: 1rem; line-height: 1.85; color: var(--ink); margin-bottom: 1.5rem; }
+    .about-text strong { color: var(--clay); font-weight: 400; }
 
-    .about-portrait {
-      width: 100%;
-      aspect-ratio: 3/4;
-      object-fit: cover;
-      filter: sepia(10%) contrast(1.05);
-    }
-
-    .about-text {
-      font-size: 1rem;
-      line-height: 1.85;
-      color: var(--ink);
-      margin-bottom: 1.5rem;
-    }
-
-    .about-text strong {
-      color: var(--clay);
-      font-weight: 400;
-    }
-
-    /* GALLERY */
     .gallery { background: var(--warm-white); }
-
     .gallery-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
       gap: 2px;
       margin-top: 3rem;
     }
-
-    .artwork-card {
-      position: relative;
-      overflow: hidden;
-      background: var(--sand);
-      cursor: pointer;
-    }
-
+    .artwork-card { position: relative; overflow: hidden; background: var(--sand); cursor: pointer; }
     .artwork-card img {
       width: 100%;
       aspect-ratio: 4/3;
@@ -300,67 +206,14 @@
       transition: transform 0.5s ease, filter 0.5s ease;
       filter: sepia(5%);
     }
+    .artwork-card:hover img { transform: scale(1.04); filter: sepia(0%); }
+    .artwork-info { padding: 1.2rem 1.4rem; border-top: 1px solid rgba(0,0,0,0.08); }
+    .artwork-number { font-size: 0.65rem; letter-spacing: 0.2em; color: var(--clay); text-transform: uppercase; margin-bottom: 0.3rem; }
+    .artwork-title { font-family: 'Cormorant Garamond', serif; font-size: 1.15rem; font-weight: 400; color: var(--deep); margin-bottom: 0.3rem; }
+    .artwork-note { font-size: 0.75rem; color: var(--text-light); font-style: italic; margin-bottom: 0.5rem; line-height: 1.4; }
+    .artwork-meta { display: flex; justify-content: flex-end; align-items: center; margin-top: 0.8rem; }
+    .artwork-price { font-family: 'Cormorant Garamond', serif; font-size: 1rem; color: var(--clay); }
 
-    .artwork-card:hover img {
-      transform: scale(1.04);
-      filter: sepia(0%);
-    }
-
-    .artwork-info {
-      padding: 1.2rem 1.4rem;
-      border-top: 1px solid rgba(0,0,0,0.08);
-    }
-
-    .artwork-number {
-      font-size: 0.65rem;
-      letter-spacing: 0.2em;
-      color: var(--clay);
-      text-transform: uppercase;
-      margin-bottom: 0.3rem;
-    }
-
-    .artwork-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.15rem;
-      font-weight: 400;
-      color: var(--deep);
-      margin-bottom: 0.3rem;
-    }
-
-    .artwork-technique {
-      font-size: 0.75rem;
-      color: var(--text-light);
-      margin-bottom: 0.5rem;
-      line-height: 1.4;
-    }
-
-    .artwork-meta {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-top: 0.8rem;
-    }
-
-    .artwork-year {
-      font-size: 0.7rem;
-      color: var(--text-light);
-      letter-spacing: 0.1em;
-    }
-
-    .artwork-price {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.1rem;
-      color: var(--clay);
-      font-weight: 600;
-    }
-
-    .artwork-dims {
-      font-size: 0.68rem;
-      color: var(--text-light);
-      margin-top: 0.2rem;
-    }
-
-    /* CONTACT */
     .contact {
       background: var(--deep);
       color: var(--sand);
@@ -369,48 +222,14 @@
       gap: 5rem;
       align-items: start;
     }
-
     .contact .section-title { color: var(--sand); }
     .contact .section-label { color: var(--clay); }
-
-    .contact-text {
-      font-size: 0.95rem;
-      line-height: 1.8;
-      color: rgba(232,220,200,0.75);
-      margin-bottom: 2rem;
-    }
-
-    .contact-item {
-      display: flex;
-      flex-direction: column;
-      margin-bottom: 1.5rem;
-    }
-
-    .contact-item-label {
-      font-size: 0.65rem;
-      letter-spacing: 0.25em;
-      text-transform: uppercase;
-      color: var(--clay);
-      margin-bottom: 0.3rem;
-    }
-
-    .contact-item-value {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.1rem;
-      color: var(--sand);
-    }
-
-    .contact-item-value a {
-      color: var(--sand);
-      text-decoration: none;
-      border-bottom: 1px solid rgba(181,132,90,0.4);
-      transition: border-color 0.2s;
-    }
-
-    .contact-item-value a:hover {
-      border-color: var(--clay);
-    }
-
+    .contact-text { font-size: 0.95rem; line-height: 1.8; color: rgba(232,220,200,0.75); margin-bottom: 2rem; }
+    .contact-item { display: flex; flex-direction: column; margin-bottom: 1.5rem; }
+    .contact-item-label { font-size: 0.65rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--clay); margin-bottom: 0.3rem; }
+    .contact-item-value { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; color: var(--sand); }
+    .contact-item-value a { color: var(--sand); text-decoration: none; border-bottom: 1px solid rgba(181,132,90,0.4); transition: border-color 0.2s; }
+    .contact-item-value a:hover { border-color: var(--clay); }
     .instagram-link {
       display: inline-flex;
       align-items: center;
@@ -425,12 +244,8 @@
       text-transform: uppercase;
       transition: all 0.25s;
     }
+    .instagram-link:hover { background: var(--clay); }
 
-    .instagram-link:hover {
-      background: var(--clay);
-    }
-
-    /* MODAL */
     .modal-overlay {
       display: none;
       position: fixed;
@@ -441,9 +256,7 @@
       align-items: center;
       padding: 2rem;
     }
-
     .modal-overlay.open { display: flex; }
-
     .modal {
       background: var(--warm-white);
       max-width: 900px;
@@ -453,72 +266,18 @@
       max-height: 90vh;
       overflow: auto;
     }
-
-    .modal img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
+    .modal img { width: 100%; height: 100%; object-fit: cover; }
     .modal-details {
       padding: 2.5rem;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
     }
-
-    .modal-number {
-      font-size: 0.65rem;
-      letter-spacing: 0.25em;
-      color: var(--clay);
-      text-transform: uppercase;
-      margin-bottom: 0.5rem;
-    }
-
-    .modal-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 2rem;
-      font-weight: 300;
-      color: var(--deep);
-      margin-bottom: 1rem;
-      line-height: 1.1;
-    }
-
-    .modal-divider {
-      width: 2rem;
-      height: 1px;
-      background: var(--clay);
-      margin-bottom: 1.2rem;
-    }
-
-    .modal-technique {
-      font-size: 0.85rem;
-      color: var(--text-light);
-      margin-bottom: 0.5rem;
-      line-height: 1.5;
-    }
-
-    .modal-year-dims {
-      font-size: 0.8rem;
-      color: var(--text-light);
-      margin-bottom: 2rem;
-    }
-
-    .modal-description {
-      font-size: 0.9rem;
-      line-height: 1.75;
-      color: var(--ink);
-      margin-bottom: 2rem;
-      flex-grow: 1;
-    }
-
-    .modal-price {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.8rem;
-      color: var(--clay);
-      margin-bottom: 1.2rem;
-    }
-
+    .modal-number { font-size: 0.65rem; letter-spacing: 0.25em; color: var(--clay); text-transform: uppercase; margin-bottom: 0.5rem; }
+    .modal-title { font-family: 'Cormorant Garamond', serif; font-size: 2rem; font-weight: 300; color: var(--deep); margin-bottom: 1rem; line-height: 1.1; }
+    .modal-divider { width: 2rem; height: 1px; background: var(--clay); margin-bottom: 1.2rem; }
+    .modal-description { font-size: 0.9rem; line-height: 1.75; color: var(--ink); margin-bottom: 2rem; flex-grow: 1; font-style: italic; }
+    .modal-price { font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; color: var(--clay); margin-bottom: 1.2rem; }
     .modal-enquire {
       display: block;
       text-align: center;
@@ -531,9 +290,7 @@
       text-transform: uppercase;
       transition: background 0.2s;
     }
-
     .modal-enquire:hover { background: var(--deep); }
-
     .modal-close {
       position: absolute;
       top: 1rem;
@@ -546,29 +303,11 @@
       line-height: 1;
     }
 
-    /* FOOTER */
-    footer {
-      background: var(--ink);
-      color: rgba(232,220,200,0.5);
-      text-align: center;
-      padding: 2rem;
-      font-size: 0.7rem;
-      letter-spacing: 0.1em;
-    }
+    footer { background: var(--ink); color: rgba(232,220,200,0.5); text-align: center; padding: 2rem; font-size: 0.7rem; letter-spacing: 0.1em; }
 
-    /* FADE IN */
-    .fade-in {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.7s ease, transform 0.7s ease;
-    }
+    .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
 
-    .fade-in.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* RESPONSIVE */
     @media (max-width: 900px) {
       .hero { grid-template-columns: 1fr; min-height: auto; }
       .hero-image { height: 60vw; }
@@ -583,7 +322,6 @@
       .modal { grid-template-columns: 1fr; }
       .modal img { max-height: 50vw; }
     }
-
     @media (max-width: 600px) {
       .gallery-grid { grid-template-columns: 1fr; }
       .nav-links li:nth-child(2) { display: none; }
@@ -592,17 +330,14 @@
 </head>
 <body>
 
-<!-- Language Toggle -->
 <div id="lang-toggle">
   <button class="active" onclick="setLang('fr')">FR</button>
   <button onclick="setLang('en')">EN</button>
 </div>
 
-<!-- HERO -->
 <header class="hero">
   <div class="hero-image">
-    <!-- Replace with: shasha-hero.jpg — the silhouette beach photo from portfolio cover -->
-    <img src="hero.jpg" alt="Shasha Gader" onerror="this.style.background='#b5845a';this.style.minHeight='100%'">
+    <img src="shasha-portrait.jpg" alt="Shasha Gader" onerror="this.style.background='#b5845a';this.style.minHeight='100%'">
   </div>
   <div class="hero-text">
     <p class="hero-eyebrow" data-fr="Artiste Plasticienne · Batik & Art Mixte" data-en="Visual Artist · Batik & Mixed Media">Artiste Plasticienne · Batik & Art Mixte</p>
@@ -617,7 +352,6 @@
   </div>
 </header>
 
-<!-- NAV -->
 <nav>
   <span class="nav-logo">Shasha Gader</span>
   <ul class="nav-links">
@@ -627,11 +361,9 @@
   </ul>
 </nav>
 
-<!-- ABOUT -->
 <section class="about" id="biographie">
   <div class="about-left fade-in">
-    <!-- Replace with: shasha-portrait.jpg -->
-    <img class="about-portrait" src="portrait.jpg" alt="Shasha Gader" onerror="this.style.background='#c4a882';this.style.display='block'">
+    <img class="about-portrait" src="shasha-portrait.jpg" alt="Shasha Gader" onerror="this.style.background='#c4a882';this.style.display='block'">
   </div>
   <div class="fade-in">
     <p class="section-label" data-fr="Biographie" data-en="Biography">Biographie</p>
@@ -648,19 +380,14 @@
   </div>
 </section>
 
-<!-- GALLERY -->
 <section class="gallery" id="oeuvres">
   <div class="fade-in">
     <p class="section-label" data-fr="Collection" data-en="Collection">Collection</p>
-    <h2 class="section-title" data-fr="Oeuvres disponibles" data-en="Available Works">Oeuvres disponibles</h2>
+    <h2 class="section-title" data-fr="Oeuvres" data-en="Works">Oeuvres</h2>
   </div>
-
-  <div class="gallery-grid" id="gallery-grid">
-    <!-- Populated by JS -->
-  </div>
+  <div class="gallery-grid" id="gallery-grid"></div>
 </section>
 
-<!-- CONTACT -->
 <section class="contact" id="contact">
   <div class="fade-in">
     <p class="section-label" data-fr="Contact" data-en="Contact">Contact</p>
@@ -697,7 +424,6 @@
   <p>© 2025 Shasha Gader · Tous droits réservés / All rights reserved</p>
 </footer>
 
-<!-- MODAL -->
 <div class="modal-overlay" id="modal-overlay" onclick="closeModal(event)">
   <button class="modal-close" onclick="closeModalDirect()">✕</button>
   <div class="modal" id="modal-content">
@@ -707,120 +433,26 @@
         <p class="modal-number" id="modal-number"></p>
         <h3 class="modal-title" id="modal-title"></h3>
         <div class="modal-divider"></div>
-        <p class="modal-technique" id="modal-technique"></p>
-        <p class="modal-year-dims" id="modal-year-dims"></p>
         <p class="modal-description" id="modal-description"></p>
       </div>
       <div>
         <p class="modal-price" id="modal-price"></p>
-        <a class="modal-enquire" id="modal-enquire" href="#" data-fr="Demande d'acquisition" data-en="Enquire to acquire">Demande d'acquisition</a>
+        <a class="modal-enquire" id="modal-enquire" href="#">Contacter l'artiste / Contact artist</a>
       </div>
     </div>
   </div>
 </div>
 
 <script>
-  // ---- DATA ----
   const artworks = [
-    {
-      id: "SG001",
-      img: "sg001.jpg", // Replace with actual image filename
-      title_fr: "L'Art de la Persévérance de la Nature",
-      title_en: "The Art of Nature's Perseverance",
-      technique: "Batik mixte argile sur toile",
-      dims: "187 × 148 cm",
-      year: "2022",
-      price: "2 500 000 CFA",
-      desc_fr: "Le Monde est en proie au réchauffement climatique, la terre endure les aléas du climat. Cette oeuvre explore le phénomène qui influence et accélère l'érosion hydrique et l'aridité du sol.",
-      desc_en: "The world is gripped by climate change, the earth endures its extremes. This work explores the phenomenon that accelerates water erosion and soil aridity."
-    },
-    {
-      id: "SG002",
-      img: "sg002.jpg",
-      title_fr: "Jeux Tracé — La Marelle",
-      title_en: "Traced Game — Hopscotch",
-      technique: "Batik mixte acrylique sur toile",
-      dims: "257 × 157 cm",
-      year: "2023",
-      price: "1 500 000 CFA",
-      desc_fr: "Souvenir d'enfance, clin d'oeil au jeu d'architecture dédié aux jeunes filles en devenir. Tout symbolise l'émergence, depuis la base jusqu'au plus haut sommet.",
-      desc_en: "A childhood memory and a nod to the architecture game played by girls coming of age. Everything here symbolises emergence, from the ground to the highest peak."
-    },
-    {
-      id: "SG003",
-      img: "sg003.jpg",
-      title_fr: "Le Feu Vert",
-      title_en: "Green Light",
-      technique: "Batik argile acrylique mixte sur toile",
-      dims: "80 × 107 cm",
-      year: "2024",
-      price: "280 000 CFA",
-      desc_fr: "Une exploration de la lumière verte comme signal de vie, de permission et de renouveau dans la nature.",
-      desc_en: "An exploration of green light as a signal of life, permission and renewal in nature."
-    },
-    {
-      id: "SG004",
-      img: "sg004.jpg",
-      title_fr: "Feu de Brousse",
-      title_en: "Bush Fire",
-      technique: "Pigment naturel mixte sur toile",
-      dims: "68 × 50 cm",
-      year: "2025",
-      price: "240 000 CFA",
-      desc_fr: "Les feux de brousse ravagent les terres africaines. Cette oeuvre en pigments naturels rend compte de la puissance et de la destruction, mais aussi du cycle inévitable de régénération.",
-      desc_en: "Bush fires devastate African lands. This work in natural pigments captures both the destruction and the inevitable cycle of regeneration."
-    },
-    {
-      id: "SG005",
-      img: "sg005.jpg",
-      title_fr: "Uniforme d'un Tirailleur",
-      title_en: "A Rifleman's Uniform",
-      technique: "Récup collage mixte sur toile",
-      dims: "95 × 63 cm",
-      year: "2026",
-      price: "950 000 CFA",
-      desc_fr: "Hommage aux tirailleurs africains, soldats de l'ombre de l'histoire coloniale. Le collage de récupération rappelle les fragments d'une mémoire collective à reconstituer.",
-      desc_en: "A tribute to African riflemen, the forgotten soldiers of colonial history. The recycled collage evokes fragments of a collective memory waiting to be reassembled."
-    },
-    {
-      id: "SG006",
-      img: "sg006.jpg",
-      title_fr: "On Voit Tous Quelque Chose dans la Lune",
-      title_en: "We All See Something in the Moon",
-      technique: "Batik mixte sur toile",
-      dims: "65 × 50 cm",
-      year: "2026",
-      price: "200 000 CFA",
-      desc_fr: "La lune, miroir universel. Chaque regard y projette une vérité différente. Une méditation sur la subjectivité de la perception humaine.",
-      desc_en: "The moon as universal mirror. Every gaze projects a different truth onto it. A meditation on the subjectivity of human perception."
-    },
-    {
-      id: "SG007",
-      img: "sg007.jpg",
-      title_fr: "Journal Intime",
-      title_en: "Private Journal",
-      technique: "Batik mixte sur toile",
-      dims: "65 × 65 cm",
-      year: "2024",
-      price: "250 000 CFA",
-      desc_fr: "Un espace intime rendu visible. L'oeuvre explore les frontières entre l'intérieur et l'extérieur, le dit et le non-dit.",
-      desc_en: "An intimate space made visible. The work explores the boundaries between inner and outer, the spoken and the unspoken."
-    },
-    {
-      id: "SG008",
-      img: "sg008.jpg",
-      title_fr: "Les Enfants de la Nature",
-      title_en: "Children of Nature",
-      technique: "Batik mixte acrylique sur toile",
-      dims: "60 × 40 cm",
-      year: "2025",
-      price: "200 000 CFA",
-      desc_fr: "Nous sommes tous enfants de la nature. Cette oeuvre célèbre le lien fondamental entre l'être humain et le monde vivant qui l'entoure.",
-      desc_en: "We are all children of nature. This work celebrates the fundamental bond between human beings and the living world around them."
-    }
+    { id: "SG001", img: "art-01.jpg", title_fr: "Oeuvre · 01", title_en: "Work · 01", price_fr: "Sur demande", price_en: "On request", desc_fr: "Contactez l'artiste pour plus d'informations sur cette oeuvre.", desc_en: "Contact the artist for more details about this work." },
+    { id: "SG002", img: "art-02.jpg", title_fr: "Oeuvre · 02", title_en: "Work · 02", price_fr: "Sur demande", price_en: "On request", desc_fr: "Contactez l'artiste pour plus d'informations sur cette oeuvre.", desc_en: "Contact the artist for more details about this work." },
+    { id: "SG003", img: "art-03.jpg", title_fr: "Oeuvre · 03", title_en: "Work · 03", price_fr: "Sur demande", price_en: "On request", desc_fr: "Contactez l'artiste pour plus d'informations sur cette oeuvre.", desc_en: "Contact the artist for more details about this work." },
+    { id: "SG004", img: "art-04.jpg", title_fr: "Oeuvre · 04", title_en: "Work · 04", price_fr: "Sur demande", price_en: "On request", desc_fr: "Contactez l'artiste pour plus d'informations sur cette oeuvre.", desc_en: "Contact the artist for more details about this work." },
+    { id: "SG005", img: "art-05.jpg", title_fr: "Oeuvre · 05", title_en: "Work · 05", price_fr: "Sur demande", price_en: "On request", desc_fr: "Contactez l'artiste pour plus d'informations sur cette oeuvre.", desc_en: "Contact the artist for more details about this work." },
+    { id: "SG006", img: "art-06.jpg", title_fr: "Oeuvre · 06", title_en: "Work · 06", price_fr: "Sur demande", price_en: "On request", desc_fr: "Contactez l'artiste pour plus d'informations sur cette oeuvre.", desc_en: "Contact the artist for more details about this work." }
   ];
 
-  // ---- LANGUAGE ----
   let currentLang = 'fr';
 
   function setLang(lang) {
@@ -834,7 +466,6 @@
     renderGallery();
   }
 
-  // ---- GALLERY ----
   function renderGallery() {
     const grid = document.getElementById('gallery-grid');
     grid.innerHTML = artworks.map(a => `
@@ -844,11 +475,9 @@
         <div class="artwork-info">
           <p class="artwork-number">${a.id}</p>
           <p class="artwork-title">${currentLang === 'fr' ? a.title_fr : a.title_en}</p>
-          <p class="artwork-technique">${a.technique}</p>
-          <p class="artwork-dims">${a.dims}</p>
+          <p class="artwork-note">${currentLang === 'fr' ? a.desc_fr : a.desc_en}</p>
           <div class="artwork-meta">
-            <span class="artwork-year">${a.year}</span>
-            <span class="artwork-price">${a.price}</span>
+            <span class="artwork-price">${currentLang === 'fr' ? a.price_fr : a.price_en}</span>
           </div>
         </div>
       </div>
@@ -856,23 +485,20 @@
     observeFadeIns();
   }
 
-  // ---- MODAL ----
   function openModal(id) {
     const a = artworks.find(x => x.id === id);
     if (!a) return;
     document.getElementById('modal-img').src = a.img;
     document.getElementById('modal-number').textContent = a.id;
     document.getElementById('modal-title').textContent = currentLang === 'fr' ? a.title_fr : a.title_en;
-    document.getElementById('modal-technique').textContent = a.technique;
-    document.getElementById('modal-year-dims').textContent = `${a.year} · ${a.dims}`;
     document.getElementById('modal-description').textContent = currentLang === 'fr' ? a.desc_fr : a.desc_en;
-    document.getElementById('modal-price').textContent = a.price;
+    document.getElementById('modal-price').textContent = currentLang === 'fr' ? a.price_fr : a.price_en;
     const phone = '22178993820';
-    const msgFr = `Bonjour Shasha, je suis intéressé(e) par l'oeuvre "${a.title_fr}" (${a.id}) — ${a.price}. Pouvez-vous me donner plus d'informations ?`;
-    const msgEn = `Hello Shasha, I am interested in the work "${a.title_en}" (${a.id}) — ${a.price}. Could you give me more information?`;
+    const msgFr = `Bonjour Shasha, je suis intéressé(e) par l'oeuvre ${a.id}. Pouvez-vous me donner plus d'informations ?`;
+    const msgEn = `Hello Shasha, I am interested in work ${a.id}. Could you give me more information?`;
     const msg = encodeURIComponent(currentLang === 'fr' ? msgFr : msgEn);
     document.getElementById('modal-enquire').href = `https://wa.me/${phone}?text=${msg}`;
-    document.getElementById('modal-enquire').textContent = currentLang === 'fr' ? "Demande via WhatsApp" : "Enquire via WhatsApp";
+    document.getElementById('modal-enquire').textContent = currentLang === 'fr' ? "Contacter via WhatsApp" : "Contact via WhatsApp";
     document.getElementById('modal-overlay').classList.add('open');
     document.body.style.overflow = 'hidden';
   }
@@ -880,15 +506,12 @@
   function closeModal(e) {
     if (e.target === document.getElementById('modal-overlay')) closeModalDirect();
   }
-
   function closeModalDirect() {
     document.getElementById('modal-overlay').classList.remove('open');
     document.body.style.overflow = '';
   }
-
   document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModalDirect(); });
 
-  // ---- FADE IN ----
   function observeFadeIns() {
     const observer = new IntersectionObserver(entries => {
       entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
@@ -896,7 +519,6 @@
     document.querySelectorAll('.fade-in:not(.visible)').forEach(el => observer.observe(el));
   }
 
-  // ---- INIT ----
   renderGallery();
   observeFadeIns();
 </script>
