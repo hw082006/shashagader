@@ -198,6 +198,7 @@
       margin-top: 3rem;
     }
     .artwork-card { position: relative; overflow: hidden; background: var(--sand); cursor: pointer; }
+    .artwork-card.hidden { display: none; }
     .artwork-card img {
       width: 100%;
       aspect-ratio: 4/3;
@@ -213,6 +214,25 @@
     .artwork-note { font-size: 0.75rem; color: var(--text-light); font-style: italic; margin-bottom: 0.5rem; line-height: 1.4; }
     .artwork-meta { display: flex; justify-content: flex-end; align-items: center; margin-top: 0.8rem; }
     .artwork-price { font-family: 'Cormorant Garamond', serif; font-size: 1rem; color: var(--clay); }
+
+    .gallery-more-wrap {
+      text-align: center;
+      margin-top: 2.5rem;
+    }
+    .btn-more {
+      display: inline-block;
+      padding: 0.85rem 2.5rem;
+      border: 1px solid var(--clay);
+      color: var(--clay);
+      background: none;
+      font-family: 'Outfit', sans-serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all 0.25s;
+    }
+    .btn-more:hover { background: var(--clay); color: white; }
 
     .contact {
       background: var(--deep);
@@ -386,6 +406,9 @@
     <h2 class="section-title" data-fr="Oeuvres" data-en="Works">Oeuvres</h2>
   </div>
   <div class="gallery-grid" id="gallery-grid"></div>
+  <div class="gallery-more-wrap" id="more-wrap" style="display:none">
+    <button class="btn-more" id="btn-more" onclick="toggleMore()"></button>
+  </div>
 </section>
 
 <section class="contact" id="contact">
@@ -444,16 +467,33 @@
 </div>
 
 <script>
+  const INITIAL_COUNT = 6;
+
   const artworks = [
-    { id: "SG001", img: "art-01.jpg", title_fr: "Oeuvre · 01", title_en: "Work · 01", price_fr: "Sur demande", price_en: "On request", desc_fr: "Contactez l'artiste pour plus d'informations sur cette oeuvre.", desc_en: "Contact the artist for more details about this work." },
-    { id: "SG002", img: "art-02.jpg", title_fr: "Oeuvre · 02", title_en: "Work · 02", price_fr: "Sur demande", price_en: "On request", desc_fr: "Contactez l'artiste pour plus d'informations sur cette oeuvre.", desc_en: "Contact the artist for more details about this work." },
-    { id: "SG003", img: "art-03.jpg", title_fr: "Oeuvre · 03", title_en: "Work · 03", price_fr: "Sur demande", price_en: "On request", desc_fr: "Contactez l'artiste pour plus d'informations sur cette oeuvre.", desc_en: "Contact the artist for more details about this work." },
-    { id: "SG004", img: "art-04.jpg", title_fr: "Oeuvre · 04", title_en: "Work · 04", price_fr: "Sur demande", price_en: "On request", desc_fr: "Contactez l'artiste pour plus d'informations sur cette oeuvre.", desc_en: "Contact the artist for more details about this work." },
-    { id: "SG005", img: "art-05.jpg", title_fr: "Oeuvre · 05", title_en: "Work · 05", price_fr: "Sur demande", price_en: "On request", desc_fr: "Contactez l'artiste pour plus d'informations sur cette oeuvre.", desc_en: "Contact the artist for more details about this work." },
-    { id: "SG006", img: "art-06.jpg", title_fr: "Oeuvre · 06", title_en: "Work · 06", price_fr: "Sur demande", price_en: "On request", desc_fr: "Contactez l'artiste pour plus d'informations sur cette oeuvre.", desc_en: "Contact the artist for more details about this work." }
+    { id: "SG001", img: "0283bb4d-77fe-47a4-8aee-9032c4f2188f.jpeg", title_fr: "Oeuvre · 01", title_en: "Work · 01", price_fr: "Sur demande", price_en: "On request", desc_fr: "Contactez l'artiste pour plus d'informations sur cette oeuvre.", desc_en: "Contact the artist for more details about this work." },
+    { id: "SG002", img: "0823fd68-bc7c-4497-9f6b-2d563ffe91bd.jpeg", title_fr: "Oeuvre · 02", title_en: "Work · 02", price_fr: "Sur demande", price_en: "On request", desc_fr: "Contactez l'artiste pour plus d'informations sur cette oeuvre.", desc_en: "Contact the artist for more details about this work." },
+    { id: "SG003", img: "12fd5e49-443a-4afd-bb39-e4b9a042d883.jpeg", title_fr: "Oeuvre · 03", title_en: "Work · 03", price_fr: "Sur demande", price_en: "On request", desc_fr: "Contactez l'artiste pour plus d'informations sur cette oeuvre.", desc_en: "Contact the artist for more details about this work." },
+    { id: "SG004", img: "2ca859fd-9377-4577-850b-2809f8f3ab15.jpeg", title_fr: "Oeuvre · 04", title_en: "Work · 04", price_fr: "Sur demande", price_en: "On request", desc_fr: "Contactez l'artiste pour plus d'informations sur cette oeuvre.", desc_en: "Contact the artist for more details about this work." },
+    { id: "SG005", img: "4103fb10-9736-453a-9d57-8824810dbd2a.jpeg", title_fr: "Oeuvre · 05", title_en: "Work · 05", price_fr: "Sur demande", price_en: "On request", desc_fr: "Contactez l'artiste pour plus d'informations sur cette oeuvre.", desc_en: "Contact the artist for more details about this work." },
+    { id: "SG006", img: "5985b4c4-d29b-468e-a1ca-3a1ea1b68993.jpeg", title_fr: "Oeuvre · 06", title_en: "Work · 06", price_fr: "Sur demande", price_en: "On request", desc_fr: "Contactez l'artiste pour plus d'informations sur cette oeuvre.", desc_en: "Contact the artist for more details about this work." },
+    { id: "SG007", img: "61ea5420-afde-4aaf-beda-05b6dd9ea969.jpeg", title_fr: "Oeuvre · 07", title_en: "Work · 07", price_fr: "Sur demande", price_en: "On request", desc_fr: "Contactez l'artiste pour plus d'informations sur cette oeuvre.", desc_en: "Contact the artist for more details about this work." },
+    { id: "SG008", img: "893d47d4-f1f7-425c-9caf-1256ab14c3c3.jpeg", title_fr: "Oeuvre · 08", title_en: "Work · 08", price_fr: "Sur demande", price_en: "On request", desc_fr: "Contactez l'artiste pour plus d'informations sur cette oeuvre.", desc_en: "Contact the artist for more details about this work." },
+    { id: "SG009", img: "94284b01-f768-4d32-b658-217ac68d73b1.jpeg", title_fr: "Oeuvre · 09", title_en: "Work · 09", price_fr: "Sur demande", price_en: "On request", desc_fr: "Contactez l'artiste pour plus d'informations sur cette oeuvre.", desc_en: "Contact the artist for more details about this work." },
+    { id: "SG010", img: "a520ce92-abd4-48ab-90d5-53b3984a4832.jpeg", title_fr: "Oeuvre · 10", title_en: "Work · 10", price_fr: "Sur demande", price_en: "On request", desc_fr: "Contactez l'artiste pour plus d'informations sur cette oeuvre.", desc_en: "Contact the artist for more details about this work." },
+    { id: "SG011", img: "b54510cf-1b7b-4c5a-acf4-028fb9899dba.jpeg", title_fr: "Oeuvre · 11", title_en: "Work · 11", price_fr: "Sur demande", price_en: "On request", desc_fr: "Contactez l'artiste pour plus d'informations sur cette oeuvre.", desc_en: "Contact the artist for more details about this work." },
+    { id: "SG012", img: "bf3415c8-1acc-443d-9cdc-74f974e78312.jpeg", title_fr: "Oeuvre · 12", title_en: "Work · 12", price_fr: "Sur demande", price_en: "On request", desc_fr: "Contactez l'artiste pour plus d'informations sur cette oeuvre.", desc_en: "Contact the artist for more details about this work." },
+    { id: "SG013", img: "bfe63361-3062-4b06-9e82-fb298571e1fc.jpeg", title_fr: "Oeuvre · 13", title_en: "Work · 13", price_fr: "Sur demande", price_en: "On request", desc_fr: "Contactez l'artiste pour plus d'informations sur cette oeuvre.", desc_en: "Contact the artist for more details about this work." },
+    { id: "SG014", img: "c9aa65b7-6445-42e4-ae7b-dc72c63345e2.jpeg", title_fr: "Oeuvre · 14", title_en: "Work · 14", price_fr: "Sur demande", price_en: "On request", desc_fr: "Contactez l'artiste pour plus d'informations sur cette oeuvre.", desc_en: "Contact the artist for more details about this work." },
+    { id: "SG015", img: "ff09aee5-b8ad-45ad-952d-4db5fd4f8a44.jpeg", title_fr: "Oeuvre · 15", title_en: "Work · 15", price_fr: "Sur demande", price_en: "On request", desc_fr: "Contactez l'artiste pour plus d'informations sur cette oeuvre.", desc_en: "Contact the artist for more details about this work." }
   ];
 
   let currentLang = 'fr';
+  let expanded = false;
+
+  const moreLabels = {
+    fr: { more: "Voir plus d'oeuvres", less: 'Voir moins' },
+    en: { more: 'View more works', less: 'Show less' }
+  };
 
   function setLang(lang) {
     currentLang = lang;
@@ -463,25 +503,48 @@
     document.querySelectorAll('#lang-toggle button').forEach((btn, i) => {
       btn.classList.toggle('active', (i === 0 && lang === 'fr') || (i === 1 && lang === 'en'));
     });
+    updateMoreButton();
     renderGallery();
+  }
+
+  function updateMoreButton() {
+    const btn = document.getElementById('btn-more');
+    if (btn) btn.textContent = expanded ? moreLabels[currentLang].less : moreLabels[currentLang].more;
+  }
+
+  function toggleMore() {
+    expanded = !expanded;
+    document.querySelectorAll('.artwork-card.extra').forEach(card => {
+      card.classList.toggle('hidden', !expanded);
+    });
+    updateMoreButton();
+    observeFadeIns();
   }
 
   function renderGallery() {
     const grid = document.getElementById('gallery-grid');
-    grid.innerHTML = artworks.map(a => `
-      <div class="artwork-card fade-in" onclick="openModal('${a.id}')">
-        <img src="${a.img}" alt="${currentLang === 'fr' ? a.title_fr : a.title_en}"
-          onerror="this.style.background='#c4a882';this.style.minHeight='220px';this.removeAttribute('src')">
-        <div class="artwork-info">
-          <p class="artwork-number">${a.id}</p>
-          <p class="artwork-title">${currentLang === 'fr' ? a.title_fr : a.title_en}</p>
-          <p class="artwork-note">${currentLang === 'fr' ? a.desc_fr : a.desc_en}</p>
-          <div class="artwork-meta">
-            <span class="artwork-price">${currentLang === 'fr' ? a.price_fr : a.price_en}</span>
+    grid.innerHTML = artworks.map((a, i) => {
+      const isExtra = i >= INITIAL_COUNT;
+      return `
+        <div class="artwork-card fade-in${isExtra ? ' extra' + (expanded ? '' : ' hidden') : ''}" onclick="openModal('${a.id}')">
+          <img src="${a.img}" alt="${currentLang === 'fr' ? a.title_fr : a.title_en}"
+            onerror="this.style.background='#c4a882';this.style.minHeight='220px';this.removeAttribute('src')">
+          <div class="artwork-info">
+            <p class="artwork-number">${a.id}</p>
+            <p class="artwork-title">${currentLang === 'fr' ? a.title_fr : a.title_en}</p>
+            <p class="artwork-note">${currentLang === 'fr' ? a.desc_fr : a.desc_en}</p>
+            <div class="artwork-meta">
+              <span class="artwork-price">${currentLang === 'fr' ? a.price_fr : a.price_en}</span>
+            </div>
           </div>
         </div>
-      </div>
-    `).join('');
+      `;
+    }).join('');
+
+    if (artworks.length > INITIAL_COUNT) {
+      document.getElementById('more-wrap').style.display = 'block';
+      updateMoreButton();
+    }
     observeFadeIns();
   }
 
@@ -516,7 +579,7 @@
     const observer = new IntersectionObserver(entries => {
       entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
     }, { threshold: 0.1 });
-    document.querySelectorAll('.fade-in:not(.visible)').forEach(el => observer.observe(el));
+    document.querySelectorAll('.fade-in:not(.visible):not(.hidden)').forEach(el => observer.observe(el));
   }
 
   renderGallery();
